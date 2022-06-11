@@ -1,6 +1,6 @@
 from django.contrib.auth import get_user_model
 from django.db import models
-
+from django.urls import reverse
 
 class NewsStory(models.Model):
     title = models.CharField(max_length=200)
@@ -10,4 +10,7 @@ class NewsStory(models.Model):
     )
     pub_date = models.DateTimeField()
     content = models.TextField()
-    image_url = models.TextField(default= "Hello")
+    image = models.URLField(help_text='(Copy Image Address)', blank=True)
+
+    class Meta: 
+        ordering = ['-pub_date']
