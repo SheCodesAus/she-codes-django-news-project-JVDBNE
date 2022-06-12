@@ -8,7 +8,7 @@ from django.views import generic
 from django.shortcuts import get_object_or_404
 from .models import CustomUser
 from news.models import NewsStory
-from .forms import CustomUserCreationForm, EditUserProfileForm
+from .forms import CustomUserCreationForm
 
 # Create your views here.
 
@@ -28,25 +28,6 @@ class CreateAccountView(CreateView):
         user = self.object
         login(self.request, user)
         return f
-
-
-class EditUserProfileView(UpdateView):
-    form_class = EditUserProfileForm
-    success_url = reverse_lazy('users:profile')
-    template_name = 'users/editProfile.html'
-    
-    def get_success_url(self):
-        print(self.request.user.id)
-        print(type(self.get_form()))
-        return reverse_lazy('users:profile', kwargs={"pk":self.request.user.id})
-
-    def get_object(self):
-        return self.request.user
-
-
-class UserProfileView(generic.DetailView):
-    model = CustomUser
-    template_name = 'users/userProfileHome.html'
 
 
 class AuthorsView(ListView):

@@ -25,17 +25,3 @@ class CustomUserCreationForm(UserCreationForm):
         fields = ['first_name', 'last_name', 'username', 'email', 'password1', 'password2',]
 
 
-class EditUserProfileForm(forms.ModelForm):
-    avatar = forms.URLField(help_text='Copy Image Address URL', required=True)
-    location = forms.CharField(max_length=30, required=False)
-    social_media_link = forms.URLField(help_text='Enter URL', required=False)
-    bio = forms.CharField(
-        max_length=2000,
-        widget=forms.Textarea(),
-        required=False,
-        help_text='Tell us a little about yourself'
-    )
-
-    class Meta:
-        model = CustomUser
-        fields = ['avatar', 'location', 'bio']
