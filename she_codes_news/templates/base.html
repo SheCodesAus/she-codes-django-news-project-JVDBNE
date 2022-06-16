@@ -10,21 +10,25 @@
         <meta name="author" content="Jessica van Dyk">
         <link href="https://fonts.googleapis.com/css?family=Manjari&display=swap" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}">
-        {% block stylesheets %}{% endblock %}
+        {% block stylesheets %}
+            <link rel="stylesheet" type="text/css" href="{% static 'news/styles.css' %}">
+        {% endblock %}
     </head>
 
     <body>
         <header>
             <div id="header-text">
                 <a id="header-link" href="{% url 'news:index' %}">
-                    <h1>She {Codes} News</h1>
-                </a>
+                    <h1>SHE<span style="color: orange">{CODES}</span> News</h1>
+                </a> 
             </div>
             <!-- include nav here -->
             {% include './nav.html' %}
         </header>
 
         <!-- content blocks here -->
-        {% block content %}{% endblock %}
+        {% block content %}
+        
+        {% endblock %}
     </body>
 </html>
